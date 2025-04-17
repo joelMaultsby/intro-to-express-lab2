@@ -28,15 +28,12 @@ app.get('/greetings/:username', (req, res) => {
 
 
 //question 2
-app.get('/roll/:number', (req, res) => {
-    const num = parseInt(req.params.number);
-    if (!num || num < 1) return res.send('Invalid number');
 
-    const roll = Math.floor(Math.random() * num) + 1;
-    res.send(`You rolled a ${roll}`);
-});
-
-
+app.get('/number/:number', (req, res) => {
+    const num = req.params.number;
+    if (isNaN(num) || num < 1 || num > 6) return res.send('Invalid number');
+    res.send(`Valid number: ${num}`);
+  });
 
 
 
